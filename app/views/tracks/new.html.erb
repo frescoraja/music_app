@@ -1,0 +1,8 @@
+<center>
+  <h2><p>Album: <%= @album.title %></p>
+    Artist: <%= @album.band.name %></h2>
+</center>
+<hr>
+  <h3>New Track</h3>
+
+<%= render "form", track: @track %>

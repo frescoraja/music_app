@@ -1,0 +1,21 @@
+<center>
+  <h3><p><%= @album.title %>
+    by the <%= link_to @band.name, band_url(@band) %></p></h3>
+</center>
+<hr>
+<h3>Track List</h3>
+  <% tracks = @album.tracks.sort_by { |track| track.ord } %>
+  <% tracks.each do |track| %>
+    <%= track.ord %>.
+      <%= link_to track.track_title, track_url(track) %>
+      <%= "(bonus)" if track.bonus %>
+      <br>
+  <% end %>
+
+<hr>
+
+<%= link_to "<<- Bands Page", bands_url %>
+|
+<%= link_to "Edit this Album", edit_album_url(@album) %>
+|
+<%= link_to "Add a Track", new_album_track_url(@album) %>

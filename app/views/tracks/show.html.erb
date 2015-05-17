@@ -1,0 +1,37 @@
+<center>
+  <h2><%= @track.ord %>. "<%= @track.track_title %>"
+  <% if @track.bonus %>
+    <%= "(bonus)" %>
+  <% end %>
+  <br>
+  on <i><%= @track.album.title %></i> (<%= @track.album.year %>)
+  <br>
+  by <%= link_to @track.band.name, band_url(@track.band) %>
+
+</h2>
+<br>
+<% lines = @track.lyrics.split(",") %>
+<% lines.each do |line| %>
+<%= line %>
+<br>
+<% end %>
+</center>
+<hr>
+<h3>Notes</h3>
+<ul>
+<% notes = @track.notes.sort_by { |note| note.updated_at } %>
+<% notes.each do |note| %>
+  <%= render "notes/note", note: note %>
+<% end %>
+</ul>
+
+<%= render "notes/form", track: @track %>
+
+
+<hr>
+
+<%= link_to "<<- #{@track.album.title}".html_safe, album_url(@track.album) %>
+|
+<%= link_to "Edit Track", edit_track_url(@track) %>
+|
+<%= link_to "Delete Track", track_url(@track), method: :delete %>

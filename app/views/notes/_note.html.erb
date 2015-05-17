@@ -1,0 +1,7 @@
+<pre><%= note.content %></pre>
+<p>Authored by:
+  <%= link_to note.user.email, "mailto:#{note.user.email}".html_safe %></p>
+<%= time_ago_in_words(note.updated_at) %> ago
+<% if note.user_id == current_user.id %>
+  <%= button_to "Destroy note", note_url(note), method: :delete %>
+<% end %>

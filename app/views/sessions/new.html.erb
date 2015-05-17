@@ -1,0 +1,22 @@
+<center>
+<h1>Sign In</h1>
+<hr>
+<form action="<%= session_url %>" method="post">
+  <%= auth_token_input %>
+
+  <label for="user-email">Email:</label>
+    <input type="text"
+           name="user[email]"
+           id="user-email"
+           value=""
+           placeholder="user@domain.com">
+  <label for="user-password">Password:</label>
+    <input type="password"
+           name="user[password]"
+           id="user-password"
+           value=""
+           placeholder="Password">
+  <input type="submit" value="Sign In">
+  <hr>
+</form>
+</center>
